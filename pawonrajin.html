@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawon Rajin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+    header {
+      background: #68b1ff; /* warna biru dikembalikan */
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      /* default sebelum terlihat */
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .btn {
+      background: #25d366;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: auto;
+      width: 100%;
+    }
+    .btn:hover {
+      background: #1ebc57;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .social-links a {
+      color: white;
+      margin: 0 15px;
+      transition: 0.3s;
+    }
+    .social-links a:hover {
+      color: #ffcc00;
+    }
+
+    /* Animasi geser dari kiri ke kanan */
+    @keyframes slideIn {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    .card.show {
+      animation: slideIn 0.6s ease forwards;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
+      .card img {
+        height: 120px;
+      }
+      .card h3 {
+        font-size: 16px;
+      }
+      .card p {
+        font-size: 14px;
+      }
+      .btn {
+        padding: 8px;
+        font-size: 14px;
+      }
+      footer p {
+        font-size: 14px;
+      }
+      .social-links a {
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pawon Rajin</h1>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://source.unsplash.com/200x150/?burger" alt="Lumpia Semarang">
+      <h3>Lumpia Semarang/5pcs</h3>
+      <p>Rp12.000</p>
+      <button class="btn" onclick="orderNow('Lumpia Semarang / 5pcs', 12000)">Pesan Disini</button>
+    </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/200x150/?pizza" alt="Lumpia Bolognese">
+      <h3>Lumpia bolognese/5pcs</h3>
+      <p>Rp15.000</p>
+      <button class="btn" onclick="orderNow('Lumpia bolognese / 5pcs', 15000)">Pesan Disini</button>
+    </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/200x150/?dimsum" alt="Dimsum">
+      <h3>Dimsum/15pcs</h3>
+      <p>Rp26.000</p>
+      <button class="btn" onclick="orderNow('Dimsum / 15pcs', 26000)">Pesan Disini</button>
+    </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/200x150/?dimsum" alt="Dimsum">
+      <h3>Dimsum/20pcs</h3>
+      <p>Rp35.000</p>
+      <button class="btn" onclick="orderNow('Dimsum / 20pcs', 35000)">Pesan Disini</button>
+    </div>
+
+    <!-- Tambah menu lagi buat tes scroll -->
+    <div class="card">
+      <img src="https://source.unsplash.com/200x150/?noodles" alt="Mie Ayam">
+      <h3>Mie Ayam</h3>
+      <p>Rp18.000</p>
+      <button class="btn" onclick="orderNow('Mie Ayam', 18000)">Pesan Disini</button>
+    </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/200x150/?rice" alt="Nasi Goreng">
+      <h3>Nasi Goreng</h3>
+      <p>Rp20.000</p>
+      <button class="btn" onclick="orderNow('Nasi Goreng', 20000)">Pesan Disini</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Ikuti Kami</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/pawon.rajin" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+      <a href="https://www.tiktok.com/@pawon.rajin" target="_blank"><i class="fab fa-tiktok fa-2x"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function orderNow(name, price) {
+      const message = `Halo Pawon Rajin, saya ingin pesan ${name} seharga Rp${price.toLocaleString()}`;
+      const phone = "6285158816061"; // Ganti dengan nomor WhatsApp Bisnis Anda
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+
+    // Observer untuk animasi saat scroll
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target); // biar animasi cuma sekali
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
