@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <link rel="icon" type="image/jpeg" href="pawonrajin.jpeg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pawon Rajin</title>
@@ -121,6 +122,31 @@
         margin: 0 10px;
       }
     }
+
+    .card.out-of-stock {
+    opacity: 0.6; /* tampilan jadi agak pudar */
+    position: relative;
+    pointer-events: none; /* seluruh card tidak bisa diklik */
+  }
+
+  .card.out-of-stock::after {
+    content: "Out of Stock";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
   </style>
 </head>
 <body>
@@ -130,28 +156,32 @@
 
   <div class="container">
     <div class="card">
-      <img src="https://source.unsplash.com/200x150/?burger" alt="Lumpia Semarang">
+      <div class="card out-of-stock">
+      <img src="lumpia-semarang.jpg" alt="Lumpia Semarang">
       <h3>Lumpia Semarang/5pcs</h3>
       <p>Rp12.000</p>
-      <button class="btn" onclick="orderNow('Lumpia Semarang / 5pcs', 12000)">Pesan Disini</button>
+      <button class="btn" disabled>Pesan Disini</button>
+      </div>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/200x150/?pizza" alt="Lumpia Bolognese">
+        <div class="card out-of-stock">
+      <img src="lumpia-bolognese.jpg" alt="Lumpia Bolognese">
       <h3>Lumpia bolognese/5pcs</h3>
       <p>Rp15.000</p>
-      <button class="btn" onclick="orderNow('Lumpia bolognese / 5pcs', 15000)">Pesan Disini</button>
+      <button class="btn" disabled>Pesan Disini</button>
+        </div>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/200x150/?dimsum" alt="Dimsum">
+      <img src="dimsum.jpeg" alt="Dimsum">
       <h3>Dimsum/15pcs</h3>
-      <p>Rp26.000</p>
-      <button class="btn" onclick="orderNow('Dimsum / 15pcs', 26000)">Pesan Disini</button>
+      <p>Rp27.000</p>
+      <button class="btn" onclick="orderNow('Dimsum / 15pcs', 27000)">Pesan Disini</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/200x150/?dimsum" alt="Dimsum">
+      <img src="dimsum.jpeg" alt="Dimsum">
       <h3>Dimsum/20pcs</h3>
       <p>Rp35.000</p>
       <button class="btn" onclick="orderNow('Dimsum / 20pcs', 35000)">Pesan Disini</button>
@@ -159,17 +189,17 @@
 
     <!-- Tambah menu lagi buat tes scroll -->
     <div class="card">
-      <img src="https://source.unsplash.com/200x150/?noodles" alt="Mie Ayam">
-      <h3>Tahu Walik/7pcs Goreng</h3>
-      <p>Rp15.000</p>
-      <button class="btn" onclick="orderNow('Tahu Walik/7pcs goreng', 15000)">Pesan Disini</button>
+      <img src="tahu-walik.jpeg" alt="Tahu Walik / 15 pcs">
+      <h3>Tahu Walik/15pcs</h3>
+      <p>Rp20.000</p>
+      <button class="btn" onclick="orderNow('Tahu Walik/15pcs', 20000)">Pesan Disini</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/200x150/?rice" alt="Nasi Goreng">
-      <h3>Tahu Walik/10pcs Frozen</h3>
-      <p>Rp20.000</p>
-      <button class="btn" onclick="orderNow('Tahu Walik/10pcs Frozen', 20000)">Pesan Disini</button>
+      <img src="tahu-walik.jpeg" alt="Nasi Goreng">
+      <h3>Tahu Walik/15pcs = Keju</h3>
+      <p>Rp25.000</p>
+      <button class="btn" onclick="orderNow('Tahu Walik/15pcs Keju', 25000)">Pesan Disini</button>
     </div>
   </div>
 
